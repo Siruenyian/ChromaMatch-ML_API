@@ -10,7 +10,7 @@ from tensorflow import keras
 from tensorflow.keras.preprocessing import image
 
 MODEL_COLOR = keras.models.load_model('Model/color_to_tone.h5')
-# MODEL_PIC = keras.models.load_model('Model/pic_to_tone')
+MODEL_PIC = keras.models.load_model('Model/pic_to_tone.h5')
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
@@ -44,7 +44,9 @@ def color_controller():
 
 @app.route('/tone', methods=['POST'])
 def tone_controller():
-    response_obj = {'tone': '', 'season': ''}
+    image = request.files['gambar']
+
+    response_obj = {'tone': predict_image(image)}
 
     return jsonify(response_obj)
 
@@ -75,14 +77,15 @@ def parse_season(index):
 
 
 def predict_image(image_file):
-    img = Image.open(image_file).convert('L')
+    img = Image.open(image_file)
     img = img.resize((224, 224))
-    X = image.img_to_array(img)
-    X = np.expand_dims(X, axis=0)
-    X = X / 255.0
-    images = np.vstack([X])
-    val = 1
-    # MODEL_PIC.predict(images)
+
+    img_array = image.img_to_array(img)
+    print(img_array)
+
+    img_array = np.expand_dims(img_array, axis=0)
+    img_array = img_array/255
+    val = MODEL_PIC.predict(img_array)
     if np.argmax(val) == 0:
         return "Olive"
     elif np.argmax(val) == 1:
