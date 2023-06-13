@@ -1,6 +1,36 @@
 # ChromaMatch-ML_API
 Repository for ML api capstone project of Bangkit 2023
 
+# Short Summary of API endpoint and how to use
+
+
+## [/precict] endpoint
+
+### Input
+
+- Image file with the name 'gambar'
+- Color with the name 'rgb1'
+- Color with the name 'rgb2'
+- Color with the name 'rgb3'
+- Color with the name 'rgb4'
+
+Colors are in hexadecimal
+
+example:
+
+```
+#B68A65
+```
+
+### Output
+
+JSON response
+
+example:
+'''javascript
+{"season_from_color":"winter","tone_from_color":"olive","tone_from_image":"Olive"}
+'''
+
 # Installing dependencies
 
 Install venv
