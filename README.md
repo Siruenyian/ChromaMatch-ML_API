@@ -27,7 +27,7 @@ example:
 JSON response
 
 example:
-```avascript
+```javascript
 {"season_from_color":"winter","tone_from_color":"olive","tone_from_image":"Olive"}
 ```
 
