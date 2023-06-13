@@ -4,7 +4,7 @@ Repository for ML api capstone project of Bangkit 2023
 # Short Summary of API endpoint and how to use
 
 
-## [/precict] endpoint
+## */predict* endpoint
 
 ### Input
 
@@ -27,9 +27,9 @@ example:
 JSON response
 
 example:
-'''javascript
+```avascript
 {"season_from_color":"winter","tone_from_color":"olive","tone_from_image":"Olive"}
-'''
+```
 
 # Installing dependencies
 
